@@ -1,0 +1,13 @@
+{% include 'navbar.html' %}
+<h2>Single department template</h2>
+<ul>
+    <li><i>id :</i>{{department.id}}</li>
+    <li><i>name :</i>{{department.name}}</li>
+    <li><i>employee :</i>
+       <ul>
+           {%for item in employee%}
+           <li>{{item}}</li>
+            {%endfor%}
+       </ul>
+       </li>
+</ul>
