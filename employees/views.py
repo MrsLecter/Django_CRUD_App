@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from employees.models import Employee, Deparment
 
 def employees(request):
-    return render(request, 'employees.html')
+    data = Employee.objects.all()
+    return render(request, 'employees.html', {'data':data})
 
-def employee(request):
-    return render(request, 'employee.html')
+def employee(request, pk):
+    current_employee = Employee.objects.get(name=pk)
+    return render(request, 'employee.html', {'data': current_employee})

@@ -1,2 +1,7 @@
 {% include 'navbar.html' %}
 <h2>List of employees</h2>
+<ul>
+{%for item in data%}
+<li>{{item}}</li>
+{%endfor%}
+</ul>
