@@ -1,0 +1,9 @@
+{% include 'navbar.html' %}
+<h2>List of departments</h2>
+<ul>
+{%for item in data%}
+    <li><a href='/department/{{item.id}}'>{{item}}</a>[<a href='/department/{{item.id}}/put'>Edit</a>] [<a href='/department/{{item.id}}/delete'>Delete</a>]</li>
+{%endfor%}
+</ul>
+
+<a href='/departments/add'>Add department</a>

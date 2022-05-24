@@ -1,0 +1,9 @@
+{% include 'navbar.html' %}
+<h2>List of employees</h2>
+<ul>
+{%for item in data%}
+    <li><a href='/employee/{{item.name}}'>{{item}}</a> [<a href='/employee/{{item.name}}/put'>Edit</a>] [<a href='/employee/{{item.name}}/delete'>Delete</a>]</li>
+{%endfor%}
+</ul>
+
+<a href='/employees/add'>Add employee</a>
