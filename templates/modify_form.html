@@ -1,0 +1,9 @@
+{% include 'navbar.html' %}
+<h2>Item modify</h2>
+
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit'>
+    <hr>
+</form>
