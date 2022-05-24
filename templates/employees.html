@@ -2,7 +2,7 @@
 <h2>List of employees</h2>
 <ul>
 {%for item in data%}
-    <li><a href='/employee/{{item.name}}'>{{item}}</a></li>
+    <li><a href='/employee/{{item.name}}'>{{item}}</a> [<a href='/employee/{{item.name}}/put'>Edit</a>]</li>
 {%endfor%}
 </ul>
 

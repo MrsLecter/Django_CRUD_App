@@ -1,5 +1,4 @@
-# from certifi import contents
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from employees.models import Employee, Deparment
 from .form import EmployeeForm, DepartmentForm
 
@@ -17,6 +16,18 @@ def add_employee(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():   
             form.save()
+        return redirect('employees')
+    context = {'form': form}
+    return render(request, 'modify_form.html', context)
+
+def update_employee(request, pk):
+    current_employee = Employee.objects.get(name=pk)
+    form = EmployeeForm(instance=current_employee)
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST, instance=current_employee)
+        if form.is_valid():   
+            form.save()
+        return redirect('employees')
     context = {'form': form}
     return render(request, 'modify_form.html', context)
 
@@ -36,5 +47,6 @@ def add_department(request):
         form = DepartmentForm(request.POST)
         if form.is_valid():   
             form.save()
+        return redirect('departments')
     context = {'form': form}
     return render(request, 'modify_form.html', context)
