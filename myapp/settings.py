@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'manager.apps.ManagerConfig',
     'employees.apps.EmployeesConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
