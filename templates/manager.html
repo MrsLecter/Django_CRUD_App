@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
+
+{% block content%}
 {%if messages%}
 <ul class='messages'>
     {%for message in messages%}
@@ -11,3 +13,4 @@
 <ul>The following projects are now available:
     <li>employees</li>
 </ul>
+{%endblock content%}

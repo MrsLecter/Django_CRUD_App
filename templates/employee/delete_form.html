@@ -1,9 +1,10 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
 
-
+{% block content%}
 <form action='' method='POST'>
     {% csrf_token %}
     <label>You want to delete employee [{{object}}]. Are you sure?</label>
     <button><a href='/employees/'>Reject</a></button>
     <input type='submit' value='Confirm'>
 </form>
+{%endblock content%}

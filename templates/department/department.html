@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
+
+{% block content%}
 <h2>Single department template</h2>
 <ul>
     <li><i>id :</i>{{department.id}}</li>
@@ -11,3 +13,4 @@
        </ul>
        </li>
 </ul>
+{%endblock content%}

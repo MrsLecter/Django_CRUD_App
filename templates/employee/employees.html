@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
+
+{% block content%}
 <h2>List of employees</h2>
 <ul>
 {%for item in data%}
@@ -11,3 +13,4 @@
 </ul>
 
 <a href='/employees/add'>Add employee</a>
+{%endblock content%}

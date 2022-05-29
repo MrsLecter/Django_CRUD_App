@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
+
+{%block content%}
 <h2>Item modify</h2>
 
 <form action='' method='POST'>
@@ -7,3 +9,4 @@
     <input type='submit'>
     <hr>
 </form>
+{%endblock content%}

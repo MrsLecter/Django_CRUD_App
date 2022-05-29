@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{%extends 'main.html'%}
+
+{% block content%}
 <h2>Single employee template</h2>
 <ul>
     <li><i>name :</i>{{data.name}}</li>
@@ -7,3 +9,4 @@
     <li><i>phone :</i>{{data.phone}}</li>
     <li><i>department :</i>{{data.department}}</li>
 </ul>
+{%endblock content%}
