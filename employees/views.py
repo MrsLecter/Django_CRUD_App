@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from employees.models import Employee, Deparment
 from .form import EmployeeForm, DepartmentForm
+from django.contrib.auth.decorators import login_required
 
 def employees(request):
     data = Employee.objects.all()
@@ -10,6 +11,8 @@ def employee(request, pk):
     current_employee = Employee.objects.get(name=pk)
     return render(request, 'employee/employee.html', {'data': current_employee})
 
+
+@login_required(login_url='/login/')
 def add_employee(request):
     form = EmployeeForm()
     if request.method == 'POST':
@@ -20,6 +23,7 @@ def add_employee(request):
     context = {'form': form}
     return render(request, 'modify_form.html', context)
 
+@login_required(login_url='/login/')
 def update_employee(request, pk):
     current_employee = Employee.objects.get(name=pk)
     form = EmployeeForm(instance=current_employee)
@@ -31,6 +35,7 @@ def update_employee(request, pk):
     context = {'form': form}
     return render(request, 'modify_form.html', context)
 
+@login_required(login_url='/login/')
 def delete_employee(request, pk):
     employee = Employee.objects.get(name=pk)
     if request.method == 'POST':
@@ -50,6 +55,7 @@ def department(request, pk):
     employees = Employee.objects.filter(department=pk)
     return render(request, 'department/department.html', {'department': department_name, 'employee': employees})
 
+@login_required(login_url='/login/')
 def add_department(request):
     form = DepartmentForm()
     if request.method == 'POST':
@@ -60,6 +66,7 @@ def add_department(request):
     context = {'form': form}
     return render(request, 'modify_form.html', context)
 
+@login_required(login_url='/login/')
 def update_department(request, pk):
     current_department = Deparment.objects.get(id=pk)
     form = DepartmentForm()
@@ -71,6 +78,7 @@ def update_department(request, pk):
     context = {'form': form}
     return render(request, 'modify_form.html', context)
 
+@login_required(login_url='/login/')
 def delete_department(request, pk):
     department = Deparment.objects.get(id=pk)
     if request.method == 'POST':

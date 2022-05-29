@@ -1,4 +1,11 @@
 {% include 'navbar.html' %}
+{%if messages%}
+<ul class='messages'>
+    {%for message in messages%}
+    <li{%if message.tags%} class="{{message.tags}}"{%endif%}> >>> {{message}}</li>
+    {%endfor%}
+</ul>
+{%endif%}
 <h2>Welcome to project manager!</h2>
 <p>Go to project: /project/<project_name></p>
 <ul>The following projects are now available:

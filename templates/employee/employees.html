@@ -2,7 +2,11 @@
 <h2>List of employees</h2>
 <ul>
 {%for item in data%}
-    <li><a href='/employee/{{item.name}}'>{{item}}</a> [<a href='/employee/{{item.name}}/put'>Edit</a>] [<a href='/employee/{{item.name}}/delete'>Delete</a>]</li>
+    <li><a href='/employee/{{item.name}}'>{{item}}</a> 
+        {% if request.user.is_authenticated %}
+            [<a href='/employee/{{item.name}}/put'>Edit</a>]
+            [<a href='/employee/{{item.name}}/delete'>Delete</a>]</li>
+        {%endif%}
 {%endfor%}
 </ul>
 

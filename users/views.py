@@ -1,13 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .models import Profile
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 # Create your views here.
+@login_required(login_url='/login/')
 def profiles(request):
     return render(request, 'users/profiles.html')
 
+
 def loginPage(request):
+
+    if request.user.is_authenticated:
+        return redirect('profiles')
+
     if(request.method == 'POST'):
         username = request.POST['username']
         password = request.POST['password']
@@ -16,7 +24,8 @@ def loginPage(request):
             # check if user exist
             user = User.objects.get(username=username)
         except:
-            print('[username] not exist')
+            messages.error(request, '[username] not exist')
+            return redirect('/manager')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -24,9 +33,11 @@ def loginPage(request):
             login(request, user)
             return redirect('profiles')
         else:
-            print('username or password is incorrect')
+             messages.error(request, 'username or password is incorrect')
+             return redirect('/manager')
     return render(request, 'users/login_registry.html')
 
 def logoutPage(request):
-    logout(request, )
-    return redirect('login')
+    logout(request)
+    messages.error(request, 'user is logout successfully')
+    return redirect('/manager')

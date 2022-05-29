@@ -2,16 +2,18 @@
 <hr>
 <ul class='main_nav'>Go to:
     <li><a href='/manager/'>Manager</a></li>
-    
-    <li><a href='/admin/'>DB admin panel</a></li>
-    <li><a href='/users/'>Profiles</a></li>
+    {% if request.user.is_authenticated %}
+        <li><a href='/admin/'>DB admin panel</a></li>
+        <li><a href='/users/'>Profiles</a></li>
+    {%endif%}
     <li><a href='/departments/'>Departments</a></li>
     <li><a href='/employees/'>Employees</a></li>
-    {% if request.user.is_athenticated %}
-    <li><a href='/users/login/'>LogIn</a></li>
+    {% if request.user.is_authenticated %}
+        <h4>Hello, {{request.user.username}}</h4>
+        <li><a href='/users/logout/'>LogOut</a></li>
     {%else%}
-    <h4>Hello, {{request.user.username}}
-    <li><a href='/users/login/'>LogOut</a></li>
+        <h4>Hello, guest</h4>
+        <li><a href='/users/login/'>LogIn</a></li>
     {%endif%}
 
 </ul>
